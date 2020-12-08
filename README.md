@@ -14,4 +14,6 @@ You need to place the AWE-W dataset in folder `AWEForSegmentation` it should con
 
 Script `awe_ear_segmentation.py` can be run directly and must be in the same directory as `AWEForSegmentation` data folder. By default the training part is commented out and pretrained weights are loaded. Feel free to uncomment the code and retrain the model.
 
+To get the pretrained weights download this [folder](https://drive.google.com/drive/folders/1gQtIAd3tgV1k3ASHhOnFCidKtPbq-ySJ?usp=sharing) and put it in the same directory as script.
+
 The script can also be run in Python Interactive to see additional markdown styling.
