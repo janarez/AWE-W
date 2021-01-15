@@ -216,7 +216,7 @@ lr_callback = tf.keras.callbacks.LearningRateScheduler(scheduler)
 # %%
 # Save all checkpoints.
 checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
-    filepath="checkpoints/final-yes/cp-{epoch:04d}.ckpt",
+    filepath="checkpoints/yes/cp-{epoch:04d}.ckpt",
     save_weights_only=True
 )
 
@@ -243,17 +243,13 @@ model_history_no = model.fit(
 )
 
 # %%
-model.evaluate(test_data)
-
-# %%
 # Loss
 loss = model_history.history['loss'].copy()
-val_loss = model_history.history['val_loss'].copy()
+no_loss = model_history_no.history['loss'].copy()
 
 plt.figure()
-plt.plot(range(EPOCHS), loss, 'r', label='Training loss')
-plt.plot(range(EPOCHS), val_loss, 'b', label='Validation loss')
-plt.title('Training and Validation Loss')
+plt.plot(range(EPOCHS), loss, 'r', label='w\ augmentations')
+plt.plot(range(EPOCHS), no_loss, 'b', label='w\o augmentations')
 plt.xlabel('Epoch')
 plt.ylabel('Loss Value')
 plt.legend()
@@ -275,8 +271,8 @@ plt.legend()
 plt.show()
 
 # %%
-model.load_weights("checkpoints/yes/cp-0100.ckpt")
-# model.load_weights("checkpoints/no/cp-0100.ckpt")
+#model.load_weights("checkpoints/yes/cp-0100.ckpt")
+model.load_weights("checkpoints/no/cp-0100.ckpt")
 
 # %%
 # CMC Curve
@@ -304,7 +300,8 @@ print(f'Rank-5: {cmc_data[4]}')
 # %%
 plt.figure()
 plt.plot(range(1,1+CLASSES), cmc_data, 'g', label='w\ augmentations')
-#plt.plot(range(1,1+CLASSES), cmc_data_no, 'r', label='w\o augmentations')
+# Copy `cmc_data` into `cmc_data_no` for the no augmentation model first.
+# plt.plot(range(1,1+CLASSES), cmc_data_no, 'r', label='w\o augmentations')
 plt.xticks([1] + list(range(10, 101, 10)))
 plt.xlabel('Rank')
 plt.ylabel('Recognition Rate')
