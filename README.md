@@ -18,10 +18,10 @@ To get the pretrained weights download this [folder](https://drive.google.com/dr
 
 ## HW 3 - recognition
 
-Implements a classification model for ear recognition. The already precropped ear images from the dataset are used. Alternatively, cropping based on the output of segmentation done in HW 2 could be easily implemented to obtain the full biometric pipeline based on ear modality. See the `recognition.pdf` report for details.
+Implements a classification model for ear recognition. See the `recognition.pdf` report for details. The already precropped ear images from the dataset are used. Alternatively, cropping based on the output of segmentation done in HW 2 could be easily implemented to obtain the full biometric pipeline based on ear modality.
 
 ### Running the model
 
-You need to place the AWE-W cropped dataset in folder `awe` it should contain 100 subfolders, one for each subject. The paths and train/test split is done based on the `awe-translation.csv` file.
+You need to place the AWE-W cropped dataset in folder `awe` it should contain 100 subfolders, one for each subject. Image paths and train / test splits are extracted from `awe-translation.csv` file.
 
-Script `awe_ear_recognition.py` can be run directly and must be in the same directory as `awe` data folder and the translation file. By default the training part is commented out and pretrained weights are loaded. Feel free to uncomment the code and retrain the model.
+Script `awe_ear_recognition.py` can be run directly and must be in the same directory as `awe` data folder and the translation file. You can skip the training part and load the pretrained weights directly as indicated in code.
