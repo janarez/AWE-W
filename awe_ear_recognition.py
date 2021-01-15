@@ -263,7 +263,7 @@ no_accuracy = model_history_no.history['accuracy'].copy()
 plt.figure()
 plt.plot(range(EPOCHS), accuracy, 'g', label='w\ augmentations')
 plt.plot(range(EPOCHS), no_accuracy, 'r', label='w\o augmentations')
-+50
+
 plt.xlabel('Epoch')
 plt.ylabel('Rank-1')
 plt.ylim([0, 1])
